@@ -185,3 +185,4 @@ fieldshift-ai/
 
 ## Important Instructions
 - Everyone will work on their separate branches and only after accepting PR will it be merged in main branch later
+- Give proper commit message for all commits
