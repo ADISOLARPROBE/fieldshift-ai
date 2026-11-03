@@ -12,6 +12,7 @@ NASA Space Apps Challenge project for farm boundary mapping, NASA environmental 
 
 Copy `.env.example` to `.env` and configure local values.
 
+```
 fieldshift-ai/
 │
 ├── apps/
@@ -181,7 +182,7 @@ fieldshift-ai/
 ├── package.json
 ├── README.md
 └── LICENSE
-
+```
 
 ## Important Instructions
 - Everyone will work on their separate branches and only after accepting PR will it be merged in main branch later
