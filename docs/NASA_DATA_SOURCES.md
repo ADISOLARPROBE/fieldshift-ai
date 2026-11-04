@@ -1,151 +1,207 @@
-# NASA Data Sources
+# FieldShift AI — Data Sources and Integration
 
-## Overview
+**Project:** FieldShift AI  
+**Challenge:** NASA Space Apps Challenge 2026 — Adapting Farms with NASA Data  
+**Status:** Proposed MVP data plan (not a statement that all data has been downloaded)  
+**Last reviewed:** November 2026
 
-FieldShift AI integrates environmental datasets with machine learning to predict crop yields and recommend suitable crops based on local growing conditions.
+> **Scope:** This file describes **what data we use**, where it comes from, how we access and store it, and its limitations. Feature engineering, XGBoost training, evaluation, and the rotation-ranking algorithm are documented in [ML_MODEL_DOCUMENTATION.md](./ML_MODEL_DOCUMENTATION.md).
 
-The initial implementation focuses on two primary environmental data sources:
+## 1. Data-source overview
 
-1. **NASA POWER** — Weather and climate data.
-2. **ISRIC SoilGrids** — Soil characteristics.
+| Source | Provider | Data | Role in FieldShift AI |
+|---|---|---|---|
+| **Crop Area, Production & Yield (APY)** | Government of India, Directorate of Economics and Statistics (DES) | Crop, state/district, season, year, area, production and/or yield | **Historical target labels** for supervised yield prediction |
+| **POWER Daily** | **NASA** | Temperature, precipitation, relative humidity, solar radiation | Historical climate features, historical normals, climate scenarios and dashboard context |
+| **SoilGrids** | ISRIC — World Soil Information | Soil pH, texture fractions, organic carbon, cation exchange capacity | Regional soil-property features and suitability context |
+| **ECOCROP** | FAO | Plant environmental requirements and tolerances | Suitability-rule reference; optional engineered ML features |
+| **Crop Calendar** | FAO | Planting/harvest windows by crop and agroecological zone | **Crop- and region-specific season mapping** for climate aggregation and rotation scheduling |
 
-The platform will use a farmer's geographical location to retrieve environmental information automatically, minimizing manual input.
+**Only POWER is a NASA dataset in this five-source MVP.** SoilGrids, DES and FAO data complement the NASA measurements. The crop calendar and ECOCROP are **not** sources of measured historical yield.
 
-## 1. NASA POWER — Climate Data
+## 2. DES — Indian Crop Area, Production & Yield
 
-NASA POWER (Prediction of Worldwide Energy Resources) provides historical meteorological and solar radiation data through a publicly accessible API.
+- **Report:** https://data.desagri.gov.in/website/crops-apy-report-web
+- **Additional reports:** https://data.desagri.gov.in/website/crops-report-district-level-web
+- **Source:** Directorate of Economics and Statistics, Department of Agriculture and Farmers Welfare, Government of India.
+- **Access:** Select state, district, crop, season, years and report format in the reporting interface. Confirm export format and allowed reuse for the retrieved records; do not assume a stable public bulk-download API exists.
 
-**Official website:** https://power.larc.nasa.gov/
+### Required raw fields
 
-### Selected Parameters
+`state`, `district`, `crop`, `agricultural_year`, `season`, `area`, `production`, and/or `yield`, plus original units and source metadata.
 
-| Parameter | API Code | Description |
-|---|---|---|
-| Average temperature | `T2M` | Daily average air temperature |
-| Maximum temperature | `T2M_MAX` | Daily maximum temperature |
-| Minimum temperature | `T2M_MIN` | Daily minimum temperature |
-| Precipitation | `PRECTOTCORR` | Daily precipitation |
-| Relative humidity | `RH2M` | Atmospheric moisture |
-| Solar radiation | `ALLSKY_SFC_SW_DWN` | Surface solar energy |
-
-### API
-
-**Endpoint:**
-
-`https://power.larc.nasa.gov/api/temporal/daily/point`
-
-**Example request:**
+**Yield target:**
 
 ```text
-https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2M_MAX,T2M_MIN,PRECTOTCORR,RH2M,ALLSKY_SFC_SW_DWN&community=AG&longitude=80.6&latitude=16.5&start=20200101&end=20201231&format=JSON
+if production is in tonnes and area is in hectares:
+    yield_tonnes_per_hectare = production_tonnes / area_hectares
 ```
 
-The data will be processed to calculate relevant environmental features such as average seasonal temperature, total rainfall, and average humidity.
+Convert units **before** computing yield. Exclude or investigate zero-area, invalid or inconsistent records. Preserve original agricultural-year labels (for example, `2022-23`) and document how each is assigned to sowing and harvest dates.
 
-**Documentation:** https://power.larc.nasa.gov/docs/services/api/
+**Granularity:** A DES district-level observation is a **district aggregate**, not a farmer-field measurement. Historical yield observations provide the supervised target; multiple NASA daily values do not create additional independent yield labels.
 
-## 2. ISRIC SoilGrids — Soil Data
+**Main risks:** Missing crop/district/season combinations, changing district boundaries, varying crop names, different area/production units, and absent information on irrigation, varieties and management.
 
-SoilGrids provides global estimates of soil properties at approximately 250-metre spatial resolution.
+## 3. NASA POWER — daily climate data
 
-It is developed by ISRIC — World Soil Information and is not a NASA dataset.
+- **Website:** https://power.larc.nasa.gov/
+- **Daily API documentation:** https://power.larc.nasa.gov/docs/services/api/temporal/daily/
+- **Endpoint:** `https://power.larc.nasa.gov/api/temporal/daily/point`
+- **Access:** Public HTTP API; use the `AG` community and document returned metadata, parameter units and missing-value conventions.
 
-### Selected Soil Parameters
+| Parameter | API code | Intended use |
+|---|---|---|
+| Mean 2-m air temperature | `T2M` | Temperature conditions |
+| Maximum 2-m air temperature | `T2M_MAX` | Heat-exposure indicators |
+| Minimum 2-m air temperature | `T2M_MIN` | Cold-exposure indicators |
+| Precipitation | `PRECTOTCORR` | Rainfall totals and dry-spell context |
+| Relative humidity | `RH2M` | Humidity features |
+| All-sky surface shortwave radiation | `ALLSKY_SFC_SW_DWN` | Solar-energy features |
 
-| Parameter | Description |
-|---|---|
-| Soil pH | Soil acidity or alkalinity |
-| Sand content | Percentage of sand particles |
-| Clay content | Percentage of clay particles |
-| Silt content | Percentage of silt particles |
-| Soil organic carbon | Indicator of organic matter |
-| Cation exchange capacity | Soil nutrient-retention capacity |
+### Example request
 
-### Data Retrieval
+```text
+https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2M_MAX,T2M_MIN,PRECTOTCORR,RH2M,ALLSKY_SFC_SW_DWN&community=AG&longitude=80.45&latitude=16.30&start=20220101&end=20221231&format=JSON
+```
 
-Soil characteristics will be estimated using the geographical coordinates of the farmer's selected location.
+The coordinate is illustrative. Confirm each requested parameter is available for the selected location and dates; check the response for API errors and missing-data sentinels.
 
-Because the SoilGrids REST API has experienced availability issues, FieldShift may use regional SoilGrids datasets obtained through supported services such as WCS or Google Earth Engine.
+### Extraction policy
 
-The values will be treated as regional soil estimates rather than exact field measurements.
+1. Match each historical yield observation to an appropriate district geometry or documented representative coordinate.
+2. Retrieve daily climate records for the relevant period, including previous calendar years when a growing season spans New Year.
+3. Use the **verified crop/region/season calendar** to identify the appropriate time window.
+4. Cache API responses by location/grid cell, date range, parameter set, and retrieval version; do not repeatedly request nearby coordinates representing the same POWER grid cell.
+5. Preserve raw data, provenance, units, coverage and retrieval timestamps.
 
-**Documentation:** https://docs.isric.org/globaldata/soilgrids/
+**Critical time distinction:** Recorded weather **during** a historical crop season can support a retrospective/hindcast analysis. A prediction issued **before planting** must instead rely on information available at that time (e.g., prior-year normals, an actual pre-season forecast, or an explicitly labeled scenario). Historical observed weather is **not** a future forecast.
 
-## 3. Data Processing Pipeline
+**Spatial limitation:** POWER data are gridded environmental estimates, not measurements taken inside an individual farm. Dataset source resolutions can vary by variable.
 
-The proposed environmental data workflow consists of:
+## 4. ISRIC SoilGrids — soil properties
 
-1. Retrieve the farmer's latitude and longitude.
-2. Fetch historical climate data from NASA POWER.
-3. Obtain corresponding soil-property estimates from SoilGrids.
-4. Clean and preprocess the collected data using Pandas and NumPy.
-5. Generate the features required by the trained ML model.
-6. Combine environmental features with farmer-provided inputs.
-7. Pass the processed data to the XGBoost model for crop yield prediction.
+- **Documentation:** https://docs.isric.org/globaldata/soilgrids/
+- **Property definitions and unit conversions:** https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html
+- **Google Earth Engine access:** https://docs.isric.org/globaldata/soilgrids/access_on_gee.html
+- **Provider:** ISRIC — World Soil Information (**not NASA**).
 
-## 4. Machine Learning Integration
+SoilGrids offers modeled soil-property estimates at approximately **250 m** resolution. For the MVP, use a documented depth selection (such as the topsoil 0–30 cm, properly aggregated from depth layers) and consistent prediction statistic (e.g., mean).
 
-FieldShift AI will initially use an XGBoost regression model to estimate crop yield.
+| Property | Layer | Convert stored values into |
+|---|---|---|
+| Soil pH (water) | `phh2o` | pH = raw / 10 |
+| Sand | `sand` | percent = raw / 10 |
+| Silt | `silt` | percent = raw / 10 |
+| Clay | `clay` | percent = raw / 10 |
+| Soil organic carbon | `soc` | g/kg = raw / 10 |
+| Cation exchange capacity | `cec` | cmol(c)/kg = raw / 10 |
 
-### Initial Input Features
+**Access status (November 2026):** ISRIC reports that its SoilGrids REST API is temporarily paused. Use **WCS**, **WebDAV/raster extracts**, or the available **Google Earth Engine community assets** rather than relying on the REST API.
 
-**Climate features:**
+**Spatial matching:** For model training, calculate a representative **district-level** soil summary using a documented spatial aggregation procedure. For farm display, extract the relevant map-cell or polygon summary, clearly labeled as a regional estimate. These are different geographical supports; do not claim the model was trained on laboratory-confirmed farm soil tests.
 
-- Average temperature
-- Total rainfall
-- Relative humidity
-- Solar radiation
+**Main risks:** Spatial heterogeneity, uncertainty in modeled layers, differences between map depth and crop-root zone, and limited ability to represent year-to-year soil changes. ISRIC cautions against treating SoilGrids as a substitute for local farm-scale soil testing.
 
-**Soil features:**
+## 5. FAO ECOCROP — environmental requirements
 
-- Soil pH
-- Sand percentage
-- Clay percentage
-- Silt percentage
-- Soil organic carbon
+- **Official page:** https://www.fao.org/geospatial/data-and-tools/data-portals/ecocrop/
+- **Provider:** Food and Agriculture Organization of the United Nations.
+- **Status:** A **legacy** database discontinued around 2015, now accessible through the FAO Global Agro-Ecological Zoning (GAEZ) environment. Confirm how each selected record can currently be exported or transcribed and record its source.
 
-**Additional features:**
+ECOCROP may provide minimum/maximum temperature, **annual** precipitation, soil pH, light, altitude and other environmental descriptors for crops.
 
-- Crop type
-- Growing season
-- Geographical region
-- Irrigation availability, where suitable training data exists
+**MVP use:** Curate verified requirements for supported crops into `crop_requirements.csv`; use them in crop suitability explanations and rules. Optionally create ML features from these requirements, but only after testing their value on held-out data.
 
-### Prediction Target
+**Important:** An ECOCROP **annual rainfall** range is **not automatically comparable** to NASA rainfall summed over a three- or four-month growing season. Record the period and interpretation of each threshold. ECOCROP neither supplies historical yield labels nor establishes whether a crop rotation improves soil health.
 
-The primary output will be:
+Validate requirements against region-specific Indian agronomic guidance wherever possible.
 
-**Expected crop yield (tonnes per hectare).**
+## 6. FAO Crop Calendar — crop and season timing
 
-Historical crop-yield records will be required to train the model.
+- **Tool:** https://cropcalendar.apps.fao.org/
+- **Provider:** FAO.
+- **Access:** Interactive crop/country/agroecological-zone calendar. Do not assume a documented bulk API for every country and crop; curate a local calendar table with source references where necessary.
 
-Predicted yields will subsequently be used by a separate recommendation and profitability calculation system.
+Required normalized fields:
 
-## 5. Limitations
+`crop_id`, `country`, `region_or_agroecological_zone`, `season`, `sowing_window_start`, `sowing_window_end`, `harvest_window_start`, `harvest_window_end`, `source`, `reviewed_at`.
 
-- Climate and soil datasets provide geographical estimates rather than exact farm measurements.
-- Historical weather observations do not represent guaranteed future conditions.
-- Pre-season predictions must use information available before planting.
-- SoilGrids data does not replace laboratory soil testing.
-- The model's reliability depends on the quality of historical training data and geographical coverage.
-- Input features and preprocessing must remain consistent between training and inference.
+**Use cases:**
 
-## 6. Initial Development Scope
+- Define the crop-specific weather aggregation window when joining NASA POWER data to DES yield records.
+- Derive sowing month, growing period and possible crop-sequence timing.
+- Check whether rotation candidates overlap or leave sufficient transition time.
 
-The first version of FieldShift AI will prioritize:
+A crop grown in **November–March** crosses calendar years. Map the reported agricultural year to the correct sowing and harvesting dates; do not naïvely aggregate only January–December of the reported year.
 
-- Automatic location-based environmental data retrieval.
-- NASA POWER weather integration.
-- SoilGrids soil-property integration.
-- Data preprocessing and feature engineering.
-- XGBoost-based crop yield prediction.
-- Basic crop suitability and profitability comparison.
+**Coverage caveat:** FAO's calendars may be unavailable or insufficiently localized for some Indian districts, varieties or seasons. Use verified Indian agricultural-university or extension calendars as fallback, with separate provenance; never invent missing crop dates.
 
-Advanced remote-sensing image processing, vegetation-index analysis, and automatic satellite-based field segmentation are outside the initial implementation scope.
+## 7. Shared identifiers and data handling
 
-## References
+All extracted data must be mapped to common identifiers before model development:
 
-1. NASA POWER — https://power.larc.nasa.gov/
-2. NASA POWER API — https://power.larc.nasa.gov/docs/services/api/
-3. ISRIC SoilGrids — https://docs.isric.org/globaldata/soilgrids/
-4. Indian Agricultural Statistics — https://data.desagri.gov.in/website/crops-report-district-level-web
+| Concept | Suggested normalized field | Notes |
+|---|---|---|
+| Crop | `crop_id` | Maintain a versioned crop-name alias table |
+| Region | `state_id`, `district_id` | Retain source names/codes and boundary versions |
+| Agricultural time | `agricultural_year`, `season` | Explicitly map to planting/harvest dates |
+| Geography | `latitude`, `longitude` or geometry | Record coordinate reference system and aggregation method |
+| Provenance | `source`, `source_version`, `retrieved_at` | Retain metadata and access/license terms |
+
+**Do not join data solely on a text district name** without checking the state, year/boundary definition and aliases. Exclude uncertain spatial/temporal mappings or flag them for manual review.
+
+### Proposed file organization
+
+```text
+ data/
+ ├── raw/
+ │   ├── des_crop_apy.csv
+ │   ├── nasa_power_daily.csv
+ │   └── soilgrids_extract.csv
+ ├── external/
+ │   ├── nasa/
+ │   ├── government/
+ │   └── fao/
+ │       ├── crop_requirements.csv
+ │       └── crop_calendar.csv
+ └── processed/
+     ├── crop_yield_labels.csv
+     ├── seasonal_climate_features.csv
+     ├── district_soil_features.csv
+     ├── crop_yield_training.csv
+     └── crop_rules.csv
+```
+
+These are **proposed output filenames**, not datasets already present in Git. Store large files outside the repository and commit only small licensed samples, manifests or scripts. Follow each provider's attribution and usage terms.
+
+### Data quality checklist
+
+- [ ] Record official source URL, license/terms, retrieval date and version.
+- [ ] Validate units, null/missing-value codes, and physically implausible values.
+- [ ] Document district boundary/centroid method and any gridded-data aggregation.
+- [ ] Harmonize crop IDs, agricultural years, seasons and calendar windows.
+- [ ] Confirm that supported crops have real historical yield labels.
+- [ ] Keep historical observations separate from forecasts and scenarios.
+- [ ] Retain the original source files and repeatable transformation scripts.
+
+## 8. Optional sources (not required for initial model)
+
+| Source | Possible use | Official site |
+|---|---|---|
+| NASA SMAP | Regional soil-moisture context; too coarse for exact field measurements | https://smap.jpl.nasa.gov/ |
+| NASA GPM | Additional precipitation monitoring | https://gpm.nasa.gov/ |
+| NASA MODIS | Vegetation monitoring **after planting**, not a pre-planting input | https://modis.gsfc.nasa.gov/ |
+| AGMARKNET | Historical market prices for **illustrative** revenue estimates | https://agmarknet.gov.in/ |
+| FAO CROPWAT | Methodology for estimating crop-water needs | https://www.fao.org/land-water/resources/tools/software/cropwat/en/ |
+
+## 9. Responsibilities and next steps
+
+1. **Verify DES coverage first** for 3–5 selected crops and the initial geographic region.
+2. Confirm calendar dates and regional coverage before building seasonal climate aggregates.
+3. Retrieve NASA POWER daily records and SoilGrids regional extracts for matching historical observations.
+4. Curate ECOCROP-based requirements plus independently sourced rotation rules.
+5. Publish dataset manifests, feature definitions and dataset versions.
+6. Follow [ML_MODEL_DOCUMENTATION.md](./ML_MODEL_DOCUMENTATION.md) for joins, training, inference, validation and recommendation logic.
+
+> **Scientific boundary:** Gridded climate, modeled soil and district yield labels support **regional decision assistance**. They do **not** substantiate a claim of validated field-level yield forecasts or quantified future soil-health improvements.
