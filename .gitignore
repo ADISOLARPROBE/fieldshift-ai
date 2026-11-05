@@ -12,9 +12,7 @@ venv/
 *.log
 .DS_Store
 data/raw/*
-data/processed/*
 !data/raw/.gitkeep
-!data/processed/.gitkeep
 apps/ml-service/model/*.pkl
 
 fieldshift_power_bundle/*
