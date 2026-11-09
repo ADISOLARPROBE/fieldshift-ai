@@ -16,3 +16,5 @@ data/raw/*
 apps/ml-service/model/*.pkl
 
 fieldshift_power_bundle/*
+
+.tmp_checks
