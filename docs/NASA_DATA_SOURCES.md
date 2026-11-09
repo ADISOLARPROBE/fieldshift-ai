@@ -21,7 +21,7 @@
 
 **Only POWER is a NASA dataset in this MVP.** ERA5 (ECMWF/Copernicus), Humeris, SoilGrids, DES and FAO data complement the NASA measurements. The crop calendar and ECOCROP are **not** sources of measured historical yield.
 
-**Soil data uses three sources — SoilGrids, ERA5 and Humeris — retrieved for all 1,200 candidate location points** (see `data/processed/fieldshift_gdhy_spaced_coordinates.py`) using a JavaScript fetch script, so each location has a combined soil feature set from all three providers rather than a single-source estimate. See section 4 for details.
+**Soil data uses three sources — SoilGrids, ERA5 and Humeris.** Planned coverage targets all 1,200 candidate location points (see `data/processed/fieldshift_gdhy_spaced_coordinates.py`) using a JavaScript fetch script. (Currently 1,109 of 1,200 points are present in the ERA5 soil download; the 91 missing locations are tracked in `data/processed/missing_coordinates.py` for refetching). See section 4 for details.
 
 ## 2. DES — Indian Crop Area, Production & Yield
 
