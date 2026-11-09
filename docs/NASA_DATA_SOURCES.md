@@ -14,10 +14,14 @@
 | **Crop Area, Production & Yield (APY)** | Government of India, Directorate of Economics and Statistics (DES) | Crop, state/district, season, year, area, production and/or yield | **Historical target labels** for supervised yield prediction |
 | **POWER Daily** | **NASA** | Temperature, precipitation, relative humidity, solar radiation | Historical climate features, historical normals, climate scenarios and dashboard context |
 | **SoilGrids** | ISRIC — World Soil Information | Soil pH, texture fractions, organic carbon, cation exchange capacity | Regional soil-property features and suitability context |
+| **ERA5** | ECMWF / Copernicus Climate Data Store | Reanalysis soil-moisture and related land-surface variables | Soil moisture/land-surface context features |
+| **Humeris** | Humeris | Additional soil-property data | Complementary soil-property features and cross-check |
 | **ECOCROP** | FAO | Plant environmental requirements and tolerances | Suitability-rule reference; optional engineered ML features |
 | **Crop Calendar** | FAO | Planting/harvest windows by crop and agroecological zone | **Crop- and region-specific season mapping** for climate aggregation and rotation scheduling |
 
-**Only POWER is a NASA dataset in this five-source MVP.** SoilGrids, DES and FAO data complement the NASA measurements. The crop calendar and ECOCROP are **not** sources of measured historical yield.
+**Only POWER is a NASA dataset in this MVP.** ERA5 (ECMWF/Copernicus), Humeris, SoilGrids, DES and FAO data complement the NASA measurements. The crop calendar and ECOCROP are **not** sources of measured historical yield.
+
+**Soil data uses three sources — SoilGrids, ERA5 and Humeris — retrieved for all 1,200 candidate location points** (see `data/processed/fieldshift_gdhy_spaced_coordinates.py`) using a JavaScript fetch script, so each location has a combined soil feature set from all three providers rather than a single-source estimate. See section 4 for details.
 
 ## 2. DES — Indian Crop Area, Production & Yield
 
@@ -79,7 +83,11 @@ The coordinate is illustrative. Confirm each requested parameter is available fo
 
 **Spatial limitation:** POWER data are gridded environmental estimates, not measurements taken inside an individual farm. Dataset source resolutions can vary by variable.
 
-## 4. ISRIC SoilGrids — soil properties
+## 4. Soil data — three sources
+
+Soil features come from **three** providers: **ISRIC SoilGrids**, **ERA5** (ECMWF Copernicus reanalysis) and **Humeris**. All three are fetched for the same **1,200 location points** defined in `data/processed/fieldshift_gdhy_spaced_coordinates.py` (150 points per model group M1–M8) using a JavaScript fetch script, then combined into a per-location soil feature set.
+
+### 4.1 ISRIC SoilGrids
 
 - **Documentation:** https://docs.isric.org/globaldata/soilgrids/
 - **Property definitions and unit conversions:** https://docs.isric.org/globaldata/soilgrids/SoilGrids_faqs_01.html
@@ -102,6 +110,32 @@ SoilGrids offers modeled soil-property estimates at approximately **250 m** reso
 **Spatial matching:** For model training, calculate a representative **district-level** soil summary using a documented spatial aggregation procedure. For farm display, extract the relevant map-cell or polygon summary, clearly labeled as a regional estimate. These are different geographical supports; do not claim the model was trained on laboratory-confirmed farm soil tests.
 
 **Main risks:** Spatial heterogeneity, uncertainty in modeled layers, differences between map depth and crop-root zone, and limited ability to represent year-to-year soil changes. ISRIC cautions against treating SoilGrids as a substitute for local farm-scale soil testing.
+
+### 4.2 ERA5 — land-surface and soil-moisture reanalysis
+
+- **Provider:** ECMWF, Copernicus Climate Change Service (C3S) Climate Data Store (**not NASA, not ISRIC**).
+- **Documentation:** https://confluence.ecmwf.int/display/CKB/ERA5+data+documentation
+- **Access:** CDS API or CLI with a Copernicus account; hourly/daily gridding on a regular lat/lon grid.
+
+ERA5 supplies **modeled land-surface state**, including soil-moisture layers and temperature, rather than measured soil chemistry. It complements SoilGrids' relatively static property maps with time-varying soil-water context.
+
+**Extraction:** Retrieve the documented soil layers/depths for each of the 1,200 coordinates, over the same date range as the corresponding climate features. Record the exact variable names, units, depth levels and time-averaging method used.
+
+**Main risks:** ERA5 is a coarse-resolution reanalysis, not a soil survey; soil moisture is a modelled land-surface estimate constrained by ERA5's own soil-type dataset, not by in-situ measurement at the location.
+
+### 4.3 Humeris — complementary soil properties
+
+- **Access:** Retrieved for the same 1,200 coordinates alongside SoilGrids and ERA5 by the same JavaScript fetch script.
+- **Role:** Additional soil-property signal and a cross-check against SoilGrids values.
+
+Record the specific variables, units, native resolution and licence terms for the Humeris records actually retrieved, and note in the manifest which of the three sources supplied each final feature so the model's provenance stays traceable.
+
+### 4.4 Combining the three sources
+
+- All three extractions key on the **same 1,200 coordinate list**, so per-location features align across sources without re-deriving geometry.
+- Keep each source's values separate until the feature builder decides how they combine; do not silently overwrite one source's value with another's.
+- Record which source, variable, depth and date each final model feature came from. Where sources disagree, keep both values and their provenance rather than averaging away the discrepancy.
+- A JS fetch script drives retrieval so the extraction is repeatable; keep it in the repo and commit its output manifest (not the raw bulk files).
 
 ## 5. FAO ECOCROP — environmental requirements
 
@@ -158,7 +192,9 @@ All extracted data must be mapped to common identifiers before model development
  ├── raw/
  │   ├── des_crop_apy.csv
  │   ├── nasa_power_daily.csv
- │   └── soilgrids_extract.csv
+ │   ├── soilgrids_extract.csv
+ │   ├── era5_soil_extract.csv
+ │   └── humeris_soil_extract.csv
  ├── external/
  │   ├── nasa/
  │   ├── government/
@@ -168,6 +204,7 @@ All extracted data must be mapped to common identifiers before model development
  └── processed/
      ├── crop_yield_labels.csv
      ├── seasonal_climate_features.csv
+     ├── location_soil_features.csv   # SoilGrids + ERA5 + Humeris, keyed on the 1,200 points
      ├── district_soil_features.csv
      ├── crop_yield_training.csv
      └── crop_rules.csv
@@ -180,6 +217,7 @@ These are **proposed output filenames**, not datasets already present in Git. St
 - [ ] Record official source URL, license/terms, retrieval date and version.
 - [ ] Validate units, null/missing-value codes, and physically implausible values.
 - [ ] Document district boundary/centroid method and any gridded-data aggregation.
+- [ ] Confirm all three soil sources (SoilGrids, ERA5, Humeris) resolved to the same 1,200 coordinates, with each output feature's source, variable, depth and units recorded.
 - [ ] Harmonize crop IDs, agricultural years, seasons and calendar windows.
 - [ ] Confirm that supported crops have real historical yield labels.
 - [ ] Keep historical observations separate from forecasts and scenarios.
@@ -199,7 +237,7 @@ These are **proposed output filenames**, not datasets already present in Git. St
 
 1. **Verify DES coverage first** for 3–5 selected crops and the initial geographic region.
 2. Confirm calendar dates and regional coverage before building seasonal climate aggregates.
-3. Retrieve NASA POWER daily records and SoilGrids regional extracts for matching historical observations.
+3. Retrieve NASA POWER daily records and the three soil extracts (SoilGrids, ERA5, Humeris) for the 1,200 location points and matching historical observations.
 4. Curate ECOCROP-based requirements plus independently sourced rotation rules.
 5. Publish dataset manifests, feature definitions and dataset versions.
 6. Follow [ML_MODEL_DOCUMENTATION.md](./ML_MODEL_DOCUMENTATION.md) for joins, training, inference, validation and recommendation logic.
