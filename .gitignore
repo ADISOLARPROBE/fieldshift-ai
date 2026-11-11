@@ -13,6 +13,8 @@ venv/
 .DS_Store
 data/raw/*
 !data/raw/.gitkeep
+data/processed/*
+!data/processed/fieldshift_gdhy_spaced_coordinates.py
 apps/ml-service/model/*.pkl
 
 fieldshift_power_bundle/*
