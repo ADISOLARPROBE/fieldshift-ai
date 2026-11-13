@@ -1,0 +1,497 @@
+{
+  "nodes": [
+    {
+      "id": "docs_architecture_fieldshift_ai",
+      "label": "FieldShift AI Architecture",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_components",
+      "label": "System Components",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_farm_boundary_flow",
+      "label": "Farm Boundary Flow",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_environmental_data_flow",
+      "label": "Environmental Data Flow",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_prediction_flow",
+      "label": "Prediction Flow",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_proposed_api_endpoints",
+      "label": "Proposed API Endpoints",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_core_data_entities",
+      "label": "Core Data Entities",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_authentication_and_authorization",
+      "label": "Authentication and Authorization",
+      "file_type": "rationale",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_deployment",
+      "label": "Deployment Architecture",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_responsible_use_and_data_quality",
+      "label": "Responsible Use and Data Quality",
+      "file_type": "rationale",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_architecture_repository_mapping",
+      "label": "Repository Mapping",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_fieldshift_ai",
+      "label": "FieldShift AI Data Sources and Integration",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_data_source_overview",
+      "label": "Data-source Overview",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_des_indian_crop_area_production_yield",
+      "label": "DES Indian Crop Area Production and Yield",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_nasa_power_daily_climate_data",
+      "label": "NASA POWER Daily Climate Data",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_soil_data_three_sources",
+      "label": "Soil Data Three Sources",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_isric_soilgrids",
+      "label": "ISRIC SoilGrids",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_era5_land_surface_and_soil_moisture_reanalysis",
+      "label": "ERA5 Land Surface and Soil Moisture Reanalysis",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_humeris_complementary_soil_properties",
+      "label": "Humeris Complementary Soil Properties",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_fao_ecocrop_environmental_requirements",
+      "label": "FAO ECOCROP Environmental Requirements",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_fao_crop_calendar_crop_and_season_timing",
+      "label": "FAO Crop Calendar Crop and Season Timing",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_shared_identifiers_and_data_handling",
+      "label": "Shared Identifiers and Data Handling",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_optional_sources_not_required_for_initial_model",
+      "label": "Optional Sources Not Required For Initial Model",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_nasa_data_sources_responsibilities_and_next_steps",
+      "label": "Responsibilities and Next Steps",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_components",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_farm_boundary_flow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_environmental_data_flow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_prediction_flow",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_proposed_api_endpoints",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_core_data_entities",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_authentication_and_authorization",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_deployment",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_responsible_use_and_data_quality",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_architecture_fieldshift_ai",
+      "target": "docs_architecture_repository_mapping",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_fieldshift_ai",
+      "target": "docs_nasa_data_sources_data_source_overview",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_data_source_overview",
+      "target": "docs_nasa_data_sources_des_indian_crop_area_production_yield",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_data_source_overview",
+      "target": "docs_nasa_data_sources_nasa_power_daily_climate_data",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_data_source_overview",
+      "target": "docs_nasa_data_sources_soil_data_three_sources",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_soil_data_three_sources",
+      "target": "docs_nasa_data_sources_isric_soilgrids",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_soil_data_three_sources",
+      "target": "docs_nasa_data_sources_era5_land_surface_and_soil_moisture_reanalysis",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_soil_data_three_sources",
+      "target": "docs_nasa_data_sources_humeris_complementary_soil_properties",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_data_source_overview",
+      "target": "docs_nasa_data_sources_fao_ecocrop_environmental_requirements",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_data_source_overview",
+      "target": "docs_nasa_data_sources_fao_crop_calendar_crop_and_season_timing",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_fieldshift_ai",
+      "target": "docs_nasa_data_sources_shared_identifiers_and_data_handling",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_sources.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_fieldshift_ai",
+      "target": "docs_nasa_data_sources_optional_sources_not_required_for_initial_model",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_nasa_data_sources_fieldshift_ai",
+      "target": "docs_nasa_data_sources_responsibilities_and_next_steps",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "coverage": {
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\ARCHITECTURE.md": 254,
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\docs\\NASA_DATA_SOURCES.md": 246
+  }
+}

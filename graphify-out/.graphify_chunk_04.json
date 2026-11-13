@@ -1,0 +1,134 @@
+{
+  "nodes": [
+    {
+      "id": "readme_project",
+      "label": "FieldShift AI",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "requirements_dependencies",
+      "label": "Python Data Science Dependencies",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apps_api_readme_api",
+      "label": "Node API Express Service",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\api\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apps_ml_service_readme_service",
+      "label": "ML Service FastAPI",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\ml-service\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apps_ml_service_requirements_dependencies",
+      "label": "ML Service Python Dependencies",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\ml-service\\requirements.txt",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apps_web_readme_frontend",
+      "label": "Web Frontend React App",
+      "file_type": "document",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\web\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "apps_web_readme_map_components",
+      "label": "Map Components",
+      "file_type": "concept",
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\web\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "readme_project",
+      "target": "apps_web_readme_frontend",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_project",
+      "target": "apps_api_readme_api",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_project",
+      "target": "apps_ml_service_readme_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "apps_web_readme_frontend",
+      "target": "apps_web_readme_map_components",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\web\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "coverage": {
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\README.md": 190,
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\requirements.txt": 4,
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\api\\README.md": 3,
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\ml-service\\README.md": 3,
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\ml-service\\requirements.txt": 8,
+    "D:\\All Vs Code\\Machine learning\\fieldshift-ai\\apps\\web\\README.md": 3
+  }
+}

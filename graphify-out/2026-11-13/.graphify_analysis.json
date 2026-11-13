@@ -1,0 +1,299 @@
+{
+  "communities": {
+    "0": [
+      "apps_api_package",
+      "apps_api_package_description",
+      "apps_api_package_devdependencies",
+      "apps_api_package_devdependencies_ts_node_dev",
+      "apps_api_package_devdependencies_types_cors",
+      "apps_api_package_devdependencies_types_express",
+      "apps_api_package_devdependencies_types_node",
+      "apps_api_package_devdependencies_typescript",
+      "apps_api_package_main",
+      "apps_api_package_name",
+      "apps_api_package_version",
+      "ref_ts_node_dev",
+      "ref_types_cors",
+      "ref_types_express",
+      "ref_types_node",
+      "ref_typescript"
+    ],
+    "1": [
+      "apps_api_tsconfig",
+      "apps_api_tsconfig_compileroptions",
+      "apps_api_tsconfig_compileroptions_esmoduleinterop",
+      "apps_api_tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "apps_api_tsconfig_compileroptions_module",
+      "apps_api_tsconfig_compileroptions_moduleresolution",
+      "apps_api_tsconfig_compileroptions_outdir",
+      "apps_api_tsconfig_compileroptions_rootdir",
+      "apps_api_tsconfig_compileroptions_skiplibcheck",
+      "apps_api_tsconfig_compileroptions_strict",
+      "apps_api_tsconfig_compileroptions_target",
+      "apps_api_tsconfig_exclude",
+      "apps_api_tsconfig_include"
+    ],
+    "2": [
+      "docs_nasa_data_sources_data_source_overview",
+      "docs_nasa_data_sources_des_indian_crop_area_production_yield",
+      "docs_nasa_data_sources_era5_land_surface_and_soil_moisture_reanalysis",
+      "docs_nasa_data_sources_fao_crop_calendar_crop_and_season_timing",
+      "docs_nasa_data_sources_fao_ecocrop_environmental_requirements",
+      "docs_nasa_data_sources_fieldshift_ai",
+      "docs_nasa_data_sources_humeris_complementary_soil_properties",
+      "docs_nasa_data_sources_isric_soilgrids",
+      "docs_nasa_data_sources_nasa_power_daily_climate_data",
+      "docs_nasa_data_sources_optional_sources_not_required_for_initial_model",
+      "docs_nasa_data_sources_responsibilities_and_next_steps",
+      "docs_nasa_data_sources_shared_identifiers_and_data_handling",
+      "docs_nasa_data_sources_soil_data_three_sources"
+    ],
+    "3": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_forceconsistentcasinginfilenames",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_outdir",
+      "tsconfig_compileroptions_rootdir",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_exclude",
+      "tsconfig_include"
+    ],
+    "4": [
+      "docs_architecture_authentication_and_authorization",
+      "docs_architecture_components",
+      "docs_architecture_core_data_entities",
+      "docs_architecture_deployment",
+      "docs_architecture_environmental_data_flow",
+      "docs_architecture_farm_boundary_flow",
+      "docs_architecture_fieldshift_ai",
+      "docs_architecture_prediction_flow",
+      "docs_architecture_proposed_api_endpoints",
+      "docs_architecture_repository_mapping",
+      "docs_architecture_responsible_use_and_data_quality"
+    ],
+    "5": [
+      "apps_api_package_dependencies",
+      "apps_api_package_dependencies_cors",
+      "apps_api_package_dependencies_dotenv",
+      "apps_api_package_dependencies_express",
+      "apps_api_src_server",
+      "apps_api_src_server_app",
+      "ref_cors",
+      "ref_dotenv",
+      "ref_express"
+    ],
+    "6": [
+      "package",
+      "package_name",
+      "package_private",
+      "package_scripts",
+      "package_scripts_build_api",
+      "package_scripts_dev_api"
+    ],
+    "7": [
+      "apps_api_readme_api",
+      "apps_ml_service_readme_service",
+      "apps_web_readme_frontend",
+      "apps_web_readme_map_components",
+      "readme_project"
+    ],
+    "8": [
+      "apps_api_package_scripts",
+      "apps_api_package_scripts_build",
+      "apps_api_package_scripts_dev",
+      "apps_api_package_scripts_start"
+    ],
+    "9": [
+      "apps_ml_service_app_main",
+      "apps_ml_service_app_main_health",
+      "fastapi",
+      "get"
+    ],
+    "10": [
+      "data_processed_fieldshift_gdhy_spaced_coordinates",
+      "data_processed_fieldshift_gdhy_spaced_coordinates_rationale_1"
+    ],
+    "11": [
+      "data_processed_missing_coordinates",
+      "data_processed_missing_coordinates_rationale_1"
+    ],
+    "12": [
+      "apps_ml_service_app_api_routes_health"
+    ],
+    "13": [
+      "apps_ml_service_app_api_routes_predict"
+    ],
+    "14": [
+      "apps_ml_service_app_api_schemas_prediction_schema"
+    ],
+    "15": [
+      "apps_ml_service_app_config"
+    ],
+    "16": [
+      "apps_ml_service_app_models_model_loader"
+    ],
+    "17": [
+      "apps_ml_service_app_services_nasa_service"
+    ],
+    "18": [
+      "apps_ml_service_app_services_prediction_service"
+    ],
+    "19": [
+      "apps_ml_service_app_services_preprocessing"
+    ],
+    "20": [
+      "apps_ml_service_requirements_dependencies"
+    ],
+    "21": [
+      "apps_web_src_components_map_farmboundary"
+    ],
+    "22": [
+      "apps_web_src_components_map_farmmap"
+    ],
+    "23": [
+      "apps_web_src_components_map_governmentparcels"
+    ],
+    "24": [
+      "apps_web_src_components_map_mapcontrols"
+    ],
+    "25": [
+      "apps_web_src_components_map_maplayers"
+    ],
+    "26": [
+      "requirements_dependencies"
+    ]
+  },
+  "cohesion": {
+    "0": 0.16666666666666666,
+    "1": 0.15384615384615385,
+    "2": 0.15384615384615385,
+    "3": 0.15384615384615385,
+    "4": 0.18181818181818182,
+    "5": 0.2777777777777778,
+    "6": 0.3333333333333333,
+    "7": 0.4,
+    "8": 0.5,
+    "9": 0.5,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0,
+    "16": 1.0,
+    "17": 1.0,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 1.0,
+    "21": 1.0,
+    "22": 1.0,
+    "23": 1.0,
+    "24": 1.0,
+    "25": 1.0,
+    "26": 1.0
+  },
+  "gods": [
+    {
+      "id": "apps_api_tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 10
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 10
+    },
+    {
+      "id": "docs_architecture_fieldshift_ai",
+      "label": "FieldShift AI Architecture",
+      "degree": 10
+    },
+    {
+      "id": "docs_nasa_data_sources_data_source_overview",
+      "label": "Data-source Overview",
+      "degree": 6
+    },
+    {
+      "id": "apps_api_package_scripts",
+      "label": "scripts",
+      "degree": 4
+    },
+    {
+      "id": "docs_nasa_data_sources_fieldshift_ai",
+      "label": "FieldShift AI Data Sources and Integration",
+      "degree": 4
+    },
+    {
+      "id": "docs_nasa_data_sources_soil_data_three_sources",
+      "label": "Soil Data Three Sources",
+      "degree": 4
+    },
+    {
+      "id": "ref_cors",
+      "label": "cors",
+      "degree": 3
+    },
+    {
+      "id": "ref_dotenv",
+      "label": "dotenv",
+      "degree": 3
+    },
+    {
+      "id": "ref_express",
+      "label": "express",
+      "degree": 3
+    }
+  ],
+  "surprises": [
+    {
+      "source": "FieldShift AI",
+      "target": "Node API Express Service",
+      "source_files": [
+        "README.md",
+        "apps/api/README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "FieldShift AI",
+      "target": "ML Service FastAPI",
+      "source_files": [
+        "README.md",
+        "apps/ml-service/README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    },
+    {
+      "source": "FieldShift AI",
+      "target": "Web Frontend React App",
+      "source_files": [
+        "README.md",
+        "apps/web/README.md"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "references",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "questions": [
+    {
+      "type": "bridge_node",
+      "question": "Why does `scripts` connect `Community 8` to `Community 0`?",
+      "why": "High betweenness centrality (0.013) - this node is a cross-community bridge."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `ML Service Python Dependencies`, `Node API Express Service`, `ML Service FastAPI` to the rest of the system?",
+      "why": "23 weakly-connected nodes found - possible documentation gaps or missing edges."
+    }
+  ]
+}

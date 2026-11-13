@@ -32,9 +32,11 @@
   - Identified **91 of 1,200 planned points never fetched** in the ERA5 soil download (M1: 10, M2: 6, M3: 2, M4: 20, M5: 23, M6: 8, M7: 19, M8: 3). Every fetched ERA5 location is otherwise complete, establishing the issue as a fetch-coverage gap rather than a date-pipeline defect.
   - Authored `data/processed/missing_coordinates.py`, listing the missing locations as 8 separate `[latitude, longitude]` lists (`MISSING_ERA5_SOIL_M1`–`M8`) keyed to the planned-point index, ready to feed into the soil fetch script for refetching.
   - Corrected `docs/NASA_DATA_SOURCES.md` to state actual ERA5 soil coverage instead of assuming all 1,200 points were retrieved.
+  - Ran the refetch script against the missing lists, producing `data/raw/soil era5/M{1..8}_missing_ERA5_2000_2019.csv`. Verified each refetched file: full 7,305-day series per point, no blank/NaN, no sentinel codes, no short series. **62 of 91** missing points were recovered (M1: 4, M2: 5, M3: 2, M4: 7, M5: 18, M6: 8, M7: 15, M8: 3); **29 remain unfetched** (M1: 6, M2: 1, M4: 13, M5: 5, M7: 4). The refetched files are held locally — `.gitignore` keeps `data/raw/*` out of version control.
 
 - **Temperature data optimization & memory reduction**:
   - Built per-zone exploration notebooks `m1_temperature_data.ipynb` through `m4_temperature_data.ipynb` (`apps/ml-service/notebooks/`) covering schema inspection, null counts, duplicate-row verification, and correlation checks.
+  - Created a dedicated `apps/ml-service/notebooks/EDA of temperature/` folder for the temperature EDA notebooks, moving the analysis out of the main notebooks directory.
   - Downcast column dtypes (`float64 → float16` for `T2M`, `PRECTOTCORR`, `ALLSKY_SFC_SW_DWN`, `latitude`, `longitude`; `int64 → int16` for `year`, `month`, `day`) to shrink in-memory footprint on the 1.1-million-row zone files before ML feature engineering.
   - Moved the bulk Temperature CSVs out of git tracking (`data/processed/*` now ignored, with `fieldshift_gdhy_spaced_coordinates.py` and the missing-coordinates manifest explicitly un-ignored) so datasets are held locally only and the repository stays lightweight.
 
