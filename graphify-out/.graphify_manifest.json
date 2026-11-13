@@ -1,0 +1,9 @@
+{
+  "created_at": "2026-11-13T19:17:01.424275",
+  "graph_json": "graphify-out/graph.json",
+  "graph_html": "graphify-out/graph.html",
+  "graph_report": "graphify-out/GRAPH_REPORT.md",
+  "analysis_json": "graphify-out/.graphify_analysis.json",
+  "labels_json": "graphify-out/.graphify_labels.json",
+  "detect_json": "graphify-out/.graphify_detect.json"
+}
