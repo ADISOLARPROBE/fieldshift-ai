@@ -1,0 +1,194 @@
+{
+  "apps/api/package.json": {
+    "mtime": 1793858074.5183847,
+    "seen": 1794593583.421076,
+    "ast_hash": "79fec4acfe89f47da6b5522d5c7e1ec6",
+    "semantic_hash": ""
+  },
+  "apps/api/src/server.ts": {
+    "mtime": 1793858074.520384,
+    "seen": 1794593583.4210835,
+    "ast_hash": "8c776ab8d16a4750c9d62caf109cdbc0",
+    "semantic_hash": ""
+  },
+  "apps/api/tsconfig.json": {
+    "mtime": 1793858074.5223837,
+    "seen": 1794593583.421087,
+    "ast_hash": "77163975739c6f45fe97af40d819eb17",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/api/routes/health.py": {
+    "mtime": 1793723825.0725565,
+    "seen": 1794593583.421089,
+    "ast_hash": "70c58cb2201fc8e50cd4cca36ac6a59d",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/api/routes/predict.py": {
+    "mtime": 1793723825.0735643,
+    "seen": 1794593583.421091,
+    "ast_hash": "a7e76dcccb661a9925adb07a1c0541c4",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/api/schemas/prediction_schema.py": {
+    "mtime": 1793723825.0735643,
+    "seen": 1794593583.4210925,
+    "ast_hash": "07e56ac6ef500f3238ab7e0d59d2d118",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/config.py": {
+    "mtime": 1793723825.0735643,
+    "seen": 1794593583.4210944,
+    "ast_hash": "7e56a9d8a30e28d7aaa4c216b7948b14",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/main.py": {
+    "mtime": 1793723825.0745628,
+    "seen": 1794593583.4210958,
+    "ast_hash": "d6e446092c24fccb571b55be2c55a746",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/models/model_loader.py": {
+    "mtime": 1793723825.0745628,
+    "seen": 1794593583.4210975,
+    "ast_hash": "cfbfb733cb6f77dff682f8a345afd651",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/services/nasa_service.py": {
+    "mtime": 1793723825.0745628,
+    "seen": 1794593583.4210992,
+    "ast_hash": "971b5441576eca1b970a2d260bc7d767",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/services/prediction_service.py": {
+    "mtime": 1793723825.0745628,
+    "seen": 1794593583.4211009,
+    "ast_hash": "47a160d5a514a715e0e1ccaf4cc2feca",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/app/services/preprocessing.py": {
+    "mtime": 1793723825.0755641,
+    "seen": 1794593583.4211025,
+    "ast_hash": "3ae6ef51b77ce77c953d6b1984d10362",
+    "semantic_hash": ""
+  },
+  "apps/web/src/components/map/FarmBoundary.tsx": {
+    "mtime": 1793723825.079565,
+    "seen": 1794593583.4211042,
+    "ast_hash": "83d6aabf81d19182def51659b8dc90d3",
+    "semantic_hash": ""
+  },
+  "apps/web/src/components/map/FarmMap.tsx": {
+    "mtime": 1793723825.080565,
+    "seen": 1794593583.4211059,
+    "ast_hash": "6eaac8b5612dbbd7cc798c9b04dadc34",
+    "semantic_hash": ""
+  },
+  "apps/web/src/components/map/GovernmentParcels.tsx": {
+    "mtime": 1793723825.080565,
+    "seen": 1794593583.4211073,
+    "ast_hash": "30be5aad40fe75cc8dab9dea95e4a3ac",
+    "semantic_hash": ""
+  },
+  "apps/web/src/components/map/MapControls.tsx": {
+    "mtime": 1793723825.080565,
+    "seen": 1794593583.4211087,
+    "ast_hash": "a5625316a6cd3f8eeae979feb22d1bbb",
+    "semantic_hash": ""
+  },
+  "apps/web/src/components/map/MapLayers.tsx": {
+    "mtime": 1793723825.080565,
+    "seen": 1794593583.4211102,
+    "ast_hash": "c816100c01094f1924702bd6ec8bad9d",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1793858074.5243826,
+    "seen": 1794593583.421112,
+    "ast_hash": "674e1f69cb6dde32b8342dcede8c646c",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1793858074.5253823,
+    "seen": 1794593583.4211135,
+    "ast_hash": "77163975739c6f45fe97af40d819eb17",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1793728404.2801483,
+    "seen": 1794593583.4211152,
+    "ast_hash": "4cf18c339b49eb1ce8b2124033c7ebea",
+    "semantic_hash": ""
+  },
+  "apps/api/README.md": {
+    "mtime": 1793723825.0678263,
+    "seen": 1794593583.4211166,
+    "ast_hash": "f38e86688c41d3dae16e1f41ef7f5278",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/README.md": {
+    "mtime": 1793723825.0725565,
+    "seen": 1794593583.4211183,
+    "ast_hash": "f418c07ce3c00568032e042cf65d13f8",
+    "semantic_hash": ""
+  },
+  "apps/ml-service/requirements.txt": {
+    "mtime": 1793723825.076563,
+    "seen": 1794593583.4211202,
+    "ast_hash": "1c968aa24d7ad0ba7395f177faae21bf",
+    "semantic_hash": ""
+  },
+  "apps/web/README.md": {
+    "mtime": 1793723825.076563,
+    "seen": 1794593583.4211218,
+    "ast_hash": "ad789fab65c4ab38665b6f8d58d8aaac",
+    "semantic_hash": ""
+  },
+  "docs/API_DOCUMENTATION.md": {
+    "mtime": 1793723825.086564,
+    "seen": 1794593583.4211235,
+    "ast_hash": "794e9154c0ff8bbc08acacd0926a62de",
+    "semantic_hash": ""
+  },
+  "docs/ARCHITECTURE.md": {
+    "mtime": 1793730794.947577,
+    "seen": 1794593583.4211252,
+    "ast_hash": "0f708a35d3a537580c0db933b2064070",
+    "semantic_hash": ""
+  },
+  "docs/CONTRIBUTING.md": {
+    "mtime": 1794429845.4722602,
+    "seen": 1794593583.421127,
+    "ast_hash": "2373ec3c9dc433ebe174b468bdb0687e",
+    "semantic_hash": ""
+  },
+  "docs/ML_MODEL_DOCUMENTATION.md": {
+    "mtime": 1793821406.9902499,
+    "seen": 1794593583.4211287,
+    "ast_hash": "fa341b3c79944e7383cd5921b207637d",
+    "semantic_hash": ""
+  },
+  "docs/NASA_DATA_SOURCES.md": {
+    "mtime": 1794238004.490168,
+    "seen": 1794593583.4211304,
+    "ast_hash": "5da2de9717736d2916047427b8c45a7d",
+    "semantic_hash": ""
+  },
+  "docs/PRD.md": {
+    "mtime": 1793820620.671434,
+    "seen": 1794593583.421132,
+    "ast_hash": "bf693e02abb50c16999af9b14ef0586d",
+    "semantic_hash": ""
+  },
+  "docs/temp_doc.md": {
+    "mtime": 1793858074.5223837,
+    "seen": 1794593583.4211335,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "requirements.txt": {
+    "mtime": 1794249704.2692945,
+    "seen": 1794593583.4211354,
+    "ast_hash": "0e42104fe417fe27b252358063652356",
+    "semantic_hash": ""
+  }
+}
